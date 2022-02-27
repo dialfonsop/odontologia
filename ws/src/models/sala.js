@@ -27,7 +27,7 @@ const sala = new Schema({
         pais: String
     },
     geo:{
-        tipo: String,
+        type: String,
         coordenadas: Array
     },
     dataArchivo: {
@@ -37,6 +37,6 @@ const sala = new Schema({
 
 });
 
-sala.index({ geo: '2dsphere'})
+sala.index({ geo: '2dsphere'});
 
 module.exports = mongoose.model('Sala', sala)

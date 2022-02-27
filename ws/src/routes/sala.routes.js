@@ -7,7 +7,7 @@ router.post('/', async(req, res) =>{
     try {
         
         const sala = await new Sala(req.body).save();
-        res.json({sala})
+        res.json({sala});
 
     } catch (error) {
         res.json({ error:true, message: error.message})
