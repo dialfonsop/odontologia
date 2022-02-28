@@ -1,0 +1,27 @@
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
+
+const archivo = new Schema({
+
+    referenciaId:{
+        type: Schema.Types.ObjectId,
+        refPath:'model'
+    },
+    model: {
+        type: String,
+        required: true,
+        enum:['Servicio', 'Sala']
+    },
+    camino: {
+        type: String,
+        required: true
+    },
+    fechaArchivo: {
+        type: Date,
+        default: Date.now
+    }
+
+})
+
+
+module.exports = mongoose.model('Archivo', archivo)

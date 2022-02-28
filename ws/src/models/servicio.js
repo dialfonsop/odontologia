@@ -25,7 +25,7 @@ const servicio = new Schema({
     required: true,
   },
   recurrencia: {
-    type: NUmber,
+    type: Number,
     required: true,
   },
   descripcion: {
