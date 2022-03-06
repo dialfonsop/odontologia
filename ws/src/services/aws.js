@@ -3,8 +3,8 @@ import AWS from 'aws-sdk';
 export default {
   IAM_USER_KEY: 'AKIAVGIHSBDDEPZIM5KK',
   IAM_USER_SECRET: '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',
-  BUCKET_NAME: '',
-  AWS_REGION: '',
+  BUCKET_NAME: 'odontologia-dev',
+  AWS_REGION: 'us-east-1',
 
   uploadToS3: function (file, filename, acl = 'public-read') {
     return new Promise((resolve, reject) => {

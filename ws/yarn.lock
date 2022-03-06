@@ -126,7 +126,7 @@ busboy@^0.2.9:
     dicer "0.2.5"
     readable-stream "1.1.x"
 
-busboy@^1.0.0:
+busboy@^1.0.0, busboy@^1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/busboy/-/busboy-1.4.0.tgz#7bb6ea83e672516ab62b7c3c418b5942f88b45bb"
   integrity sha512-TytIELfX6IPn1OClqcBz0NFE6+JT9e3iW0ZpgnEl7ffsfDxvRZGHfPaSHGbrI443nSV3GutCDWuqLB6yHY92Ew==

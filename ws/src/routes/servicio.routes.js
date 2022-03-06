@@ -1,16 +1,66 @@
 const express = require("express");
 const router = express.Router();
+const Busboy = require("busboy");
+const aws = require("../services/aws");
 const Sala = require("../models/sala.js");
+const Archivo = require("../models/archivo.js");
 const Servicio = require("../models/servicio.js");
+const { json } = require("express");
 
 router.post("/", async (req, res) => {
-  try {
-      
-  } catch (error) {
-    res.json({ error: true, message: error.message });
-  }
+  let busboy = new Busboy({ headers: req.header });
+  busboy.on("finish", async () => {
+    try {
+      const { salaId, servicio } = req.body;
+      let errores = [];
+      let archivos = [];
+
+      if (req.files && Object.keys(req.files) > 0) {
+        for (let key of Object.keys(req.files)) {
+          const file = req.files[key];
+
+          const nameParts = file.name.split(".");
+          const fileName = `${new Date().getTime()}.${
+            nameParts[nameParts.length - 1]
+          }`;
+          const path = `servicios/${salaId}/${fileName}`;
+
+          const response = await aws.uploadToS3(file, path);
+
+          if (response.error) {
+            errores.push({ error: true, message: response.message.message });
+          } else {
+            archivos.push(path);
+          }
+        }
+
+        if (errores.length > 0) {
+          res.json(errores[0]);
+          return false;
+        }
+
+        //Crear servicio
+        let jsonServicio = JSON.parse(servicio);
+        const servicioRegistro = await Servicio(jsonServicio).save();
+
+        // Crear Archivo
+        archivos = archivos.map((archivo) => ({
+          referenciaId: servicioRegistro._id,
+          model: "Servicio",
+          camino: archivo,
+        }));
+
+        await Archivo.insertMany(archivos);
+
+        res.json({ servicio: servicioRegistro, archivos })
+
+
+      }
+    } catch (error) {
+      res.json({ error: true, message: error.message });
+    }
+  });
+  req.pipe();
 });
-
-
 
 module.exports = router;

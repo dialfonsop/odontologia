@@ -11,6 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "aws-sdk": "^2.1085.0",
+    "busboy": "^1.4.0",
     "busboy-body-parser": "^0.3.2",
     "connect-busboy": "^1.0.0",
     "cors": "^2.8.5",
