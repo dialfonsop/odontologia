@@ -118,7 +118,7 @@ busboy-body-parser@^0.3.2:
     bytes "^2.0.0"
     debug "^2.1.0"
 
-busboy@^0.2.9:
+busboy@0.2.14, busboy@^0.2.9:
   version "0.2.14"
   resolved "https://registry.yarnpkg.com/busboy/-/busboy-0.2.14.tgz#6c2a622efcf47c57bbbe1e2a9c37ad36c7925453"
   integrity sha1-bCpiLvz0fFe7vh4qnDetNseSVFM=
@@ -126,7 +126,7 @@ busboy@^0.2.9:
     dicer "0.2.5"
     readable-stream "1.1.x"
 
-busboy@^1.0.0, busboy@^1.4.0:
+busboy@^1.0.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/busboy/-/busboy-1.4.0.tgz#7bb6ea83e672516ab62b7c3c418b5942f88b45bb"
   integrity sha512-TytIELfX6IPn1OClqcBz0NFE6+JT9e3iW0ZpgnEl7ffsfDxvRZGHfPaSHGbrI443nSV3GutCDWuqLB6yHY92Ew==
