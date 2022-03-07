@@ -16,6 +16,7 @@ app.use(cors())
 app.set('port',8000);
 
 app.use('/sala', require('./src/routes/sala.routes'));
+app.use('/servicio', require('./src/routes/servicio.routes'));
 
 app.listen(app.get('port'), () => {
     console.log(`WS esta siendo escuhado ${app.get('port')}`)

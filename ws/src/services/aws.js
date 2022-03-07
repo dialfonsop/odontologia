@@ -1,6 +1,6 @@
-import AWS from 'aws-sdk';
+const AWS = require('aws-sdk');
 
-export default {
+module.exports = {
   IAM_USER_KEY: 'AKIAVGIHSBDDEPZIM5KK',
   IAM_USER_SECRET: '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',
   BUCKET_NAME: 'odontologia-dev',

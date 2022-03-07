@@ -33,10 +33,10 @@ array-flatten@1.1.1:
   resolved "https://registry.yarnpkg.com/array-flatten/-/array-flatten-1.1.1.tgz#9a5f699051b1e7073328f2a008968b64ea2955d2"
   integrity sha1-ml9pkFGx5wczKPKgCJaLZOopVdI=
 
-aws-sdk@^2.1085.0:
-  version "2.1085.0"
-  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.1085.0.tgz#bb509d1e321754fbcd90dff3449f5601e64fb607"
-  integrity sha512-zL20v5QXoSsb2S6RKAhDmfnZYUIRldR93ihJ6mCYrw6Zl+Dir2SVmALy++U/zduDbKB4NaU72mscumx2RWc7Hg==
+aws-sdk@^2.1087.0:
+  version "2.1087.0"
+  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.1087.0.tgz#bb00dbac5c6bf415040ad00e7c95462b34c26ddf"
+  integrity sha512-m5EERT29Fwh2cv3SaSdygeAjJBXnjSaXRRERy70bf6PQ7KgmASJouBxY11g5G7LTEPK/yfB0TGshujKh3hEtPA==
   dependencies:
     buffer "4.9.2"
     events "1.1.1"
