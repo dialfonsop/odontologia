@@ -15,7 +15,6 @@ router.post("/", async (req, res) => {
       let errores = [];
       let archivos = [];
 
-
       if (req.files && Object.keys(req.files).length > 0) {
         for (let key of Object.keys(req.files)) {
           const file = req.files[key];
@@ -70,7 +69,6 @@ router.put("/:id", async (req, res) => {
       let errores = [];
       let archivos = [];
 
-
       if (req.files && Object.keys(req.files).length > 0) {
         for (let key of Object.keys(req.files)) {
           const file = req.files[key];
@@ -115,6 +113,46 @@ router.put("/:id", async (req, res) => {
     }
   });
   req.pipe(busboy);
+});
+
+router.get('/sala/:salaId', async (req, res) => {
+  try {
+
+    const servicios = await Servicio.find({
+      salaId: req.params.salaId,
+      status: {$ne: 'E'}
+    });
+    
+  } catch (error) {
+    res.json({error: true, message: error.message})
+  }
+})
+
+router.post("/delete-archivo/", async (req, res) => {
+  try {
+    const { id } = req.body;
+
+    await aws.deleteFileS3(id);
+
+    await Archivo.findOneAndDelete({
+      camino: id,
+    });
+
+    res.json({ error: false });
+  } catch (error) {
+    res.json({ error: true, message: error.message });
+  }
+});
+
+router.delete("/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    await Servicio.findByIdAndUpdate(id, {status: 'E'});
+
+    res.json({ error: false });
+  } catch (error) {
+    res.json({ error: true, message: error.message });
+  }
 });
 
 module.exports = router;
