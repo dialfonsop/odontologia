@@ -115,18 +115,31 @@ router.put("/:id", async (req, res) => {
   req.pipe(busboy);
 });
 
-router.get('/sala/:salaId', async (req, res) => {
+router.get("/sala/:salaId", async (req, res) => {
   try {
-
+    let serviciosSala = [];
     const servicios = await Servicio.find({
       salaId: req.params.salaId,
-      status: {$ne: 'E'}
+      status: { $ne: "E" },
     });
-    
+
+    for (let servicio of servicios) {
+      const archivos = await Archivo.find({
+        model: "Servicio",
+        referenciaId: servicio._id,
+      });
+
+      serviciosSala.push({...servicio._doc, archivos});
+    }
+
+    res.json({
+      servicios: serviciosSala
+
+    })
   } catch (error) {
-    res.json({error: true, message: error.message})
+    res.json({ error: true, message: error.message });
   }
-})
+});
 
 router.post("/delete-archivo/", async (req, res) => {
   try {
@@ -147,7 +160,7 @@ router.post("/delete-archivo/", async (req, res) => {
 router.delete("/:id", async (req, res) => {
   try {
     const { id } = req.params;
-    await Servicio.findByIdAndUpdate(id, {status: 'E'});
+    await Servicio.findByIdAndUpdate(id, { status: "E" });
 
     res.json({ error: false });
   } catch (error) {

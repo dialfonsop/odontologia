@@ -28,7 +28,7 @@ const sala = new Schema({
     },
     geo:{
         type: String,
-        coordenadas: Array
+        coordinates: [Number],
     },
     dataArchivo: {
         type: Date,

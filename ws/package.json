@@ -10,6 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@turf/turf": "^6.5.0",
     "aws-sdk": "^2.1087.0",
     "busboy": "0.2.14",
     "busboy-body-parser": "^0.3.2",
